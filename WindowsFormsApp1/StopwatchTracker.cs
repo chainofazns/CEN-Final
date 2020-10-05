@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 using System.Data.SQLite;
 
@@ -26,6 +26,8 @@ namespace MyFitTimer_1
             sql_conn = CreateConnection();
             CreateTable(sql_conn);
             startTime = DateTime.Now;
+            button2.Visible = true;
+            button1.Visible = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -42,7 +44,8 @@ namespace MyFitTimer_1
             //pull past times and add to our message
             string past = ReadData(sql_conn, "\nPast Times:\n");
             MessageBox.Show(msg + past);
-
+            button2.Visible = false;
+            button1.Visible = true;
         }
         //SQL comamnds
         static SQLiteConnection CreateConnection() {
